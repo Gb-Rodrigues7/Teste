@@ -16,15 +16,6 @@ export default function App() {
       <Text>Meu projeto GABRIEL</Text>
       <StatusBar style="auto" />
 
-      <Image 
-        source={{
-          uri: 
-        }}
-        style = {{
-          height: 400,
-          width: 400
-        }}
-      />
 
       <Text>{2 + 2}</Text>
 
