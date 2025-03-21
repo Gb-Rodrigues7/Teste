@@ -11,6 +11,8 @@ export default function App() {
     
       <PrimeiroComponente/>
 
+      <SegundoComponente/>
+
 
     </View>
   );
