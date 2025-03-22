@@ -4,6 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import PrimeiroComponente from './componentes/PrimeiroComponente';
 import SegundoComponente from './componentes/SegundoComponente';
 import TerceiroComponente from './componentes/terceiroComponente';
+import JavaScriptCompomente from './componentes/JavaScriptCompomente';
 
 export default function App() {
   return (
@@ -11,11 +12,17 @@ export default function App() {
       <StatusBar style="auto" />
     
       <PrimeiroComponente/>
+      <Text/>
 
       <SegundoComponente/>
 
+      <Text/>
+
       <TerceiroComponente/>
 
+      <Text/>
+
+      <JavaScriptCompomente/>
 
     </View>
   );
