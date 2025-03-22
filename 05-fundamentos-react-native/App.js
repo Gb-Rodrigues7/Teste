@@ -5,6 +5,7 @@ import PrimeiroComponente from './componentes/PrimeiroComponente';
 import SegundoComponente from './componentes/SegundoComponente';
 import TerceiroComponente from './componentes/terceiroComponente';
 import JavaScriptCompomente from './componentes/JavaScriptCompomente';
+import Perfil from './componentes/Perfil';
 
 export default function App() {
   return (
@@ -23,6 +24,27 @@ export default function App() {
       <Text/>
 
       <JavaScriptCompomente/>
+
+      <Text/>
+      
+      <Perfil
+        nome = "Gabriel"
+        idade = {20}
+        email = "gabriel@gmail.com"
+      
+      />
+      <Perfil
+        nome = "Pedro"
+        idade = {26}
+        email = "Pedro@gmail.com"
+      
+      />
+      <Perfil
+        nome = "Cabral"
+        idade = {52}
+        email = "Cabral@gmail.com"
+      
+      />
 
     </View>
   );
