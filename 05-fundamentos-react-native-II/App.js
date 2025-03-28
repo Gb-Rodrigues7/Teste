@@ -43,9 +43,8 @@ export default function App() {
 
   return (
     <ScrollView>
-
       <View style={styles.container}>
-        <StatusBar style="auto" />
+        <StatusBar style='auto' />
 
         {
           listaJogadores.map(
