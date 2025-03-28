@@ -1,35 +1,52 @@
-import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import { StyleSheet, Text, View } from 'react-native'
 
-export default function Perfil(props) {
+export default function ListaComponente() {
 
-
-    console.log(props)
-
-
-
-
+  const lista = ["Uva", "Maçã", "Banana", "Laranja"]
 
   return (
-    <View style={styles.container}> 
-      <Text style={styles.texto}>Perfil</Text>
-      <Text style={styles.texto}>Nome: {props.nome}</Text>
-      <Text style={styles.texto}>Idade:{props.idade}</Text>
-      <Text style={styles.texto}>Email:{props.email}</Text>
-      <Text style={styles.texto}>Telefone:{props.telefone}</Text>
+    <View style={styles.container}>
+
+      {lista.map((fruta) => <Text style={styles.texto}>{fruta}</Text>)}
+
+      {lista.map(
+        (fruta) => {
+          return (
+            <View style={styles.containerAmarelo}>
+              <Text style={styles.texto}>{fruta}</Text>
+            </View>
+          )
+        }
+      )}
+
+      {
+        lista.map(
+          (fruta) => {
+            return (
+              <View>
+                <Text>{fruta}</Text>
+              </View>
+            )
+          }
+        )
+      }
+
     </View>
   )
 }
 
 const styles = StyleSheet.create({
-    container: {
-        backgroundColor: 'red',
-        borderWidth: '10',
-        padding: 10
-    },
-    texto: {
-        fontSize: 20,
-        fontWeight: 600,
-        color: 'white'
-    }
+  container: {
+    backgroundColor: "red",
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  texto: {
+    fontSize: 20,
+    fontWeight: 600
+  },
+  containerAmarelo: {
+    backgroundColor: "yellow"
+  }
 })
