@@ -1,0 +1,6 @@
+npx create-expo-app@latest 07-Lista-estados --template blank
+
+Dentro da pasta
+
+npm install react-native-paper
+npm install react-native-vector-icons react-native-safe-area-context
