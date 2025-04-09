@@ -16,8 +16,8 @@ export default function Time(props) {
       <Card.Actions> 
       <FlatList
       horizontal
-        data={jogadores} // Corrigido para jogadores
-        keyExtractor={(item) => item.numero.toString()} // Chave única para cada jogador
+        data={jogadores}
+        keyExtractor={(item) => item.numero.toString()}
         renderItem={({ item }) => (
             <Jogadores
             nome={item.nome}
