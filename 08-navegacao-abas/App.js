@@ -19,6 +19,13 @@ export default function App() {
 
             <Tab.Screen name = 'HomeScreen' component={HomeScreen} 
             options={{
+              title: 'Inicio',
+              headerTitleAlign: 'center',
+              headerStyle: {
+                backgroundColor: 'red'
+              },
+              tabBarInactiveTintColor: 'black',
+              tabBarActiveTintColor: 'red',
               tabBarIcon: ({ color, size }) => (
                 <Ionicons name="home" size={size} color={color}/>
               )
