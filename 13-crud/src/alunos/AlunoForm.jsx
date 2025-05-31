@@ -1,89 +1,142 @@
+import { useState } from 'react'
 import { StyleSheet, View } from 'react-native'
-import React from 'react'
-import {Text, TextInput} from 'react-native-paper'
+import { TextInputMask } from 'react-native-masked-text'
+import { Button, Text, TextInput } from 'react-native-paper'
+import AlunoService from './AlunoService'
 
+export default function AlunoForm({ navigation, route }) {
 
-export default function AlunoForm() {
+  const [nome, setNome] = useState("")
+  const [cpf, setCpf] = useState("")
+  const [email, setEmail] = useState("")
+  const [telefone, setTelefone] = useState("")
+  const [dataNascimento, setDataNascimento] = useState("")
 
-    const [nome, setNome] = useState("")
-    const [telefone, setTelefone] = useState("")
-    const [email, setEmail] = useState("")
-    const [cpf, setCPF] = useState("")
-    const [dataNascimento, setDataNascimento] = useState("")
-
-    function salvar() {
-        let aluno={
-            nome,
-            cpf,
-            email,
-            telefone,
-            dataNascimento
-        }
+  async function salvar() {
+    let aluno = {
+      nome,
+      cpf,
+      email,
+      telefone,
+      dataNascimento
     }
+
+    if (!aluno.nome || !aluno.cpf || !aluno.email || !aluno.dataNascimento || !aluno.telefone) {
+      alert('Preencha todos os campos!')
+      return
+    }
+
+    await AlunoService.salvar(aluno)
+    alert("Aluno cadastrado com sucesso!!!")
+    navigation.reset({
+      index: 0,
+      routes: [{ name: 'AlunoLista' }]
+    })
+
+
+  }
+
 
   return (
     <View style={styles.container}>
-      <Text variant='titleLarge'>Informe os dados:</Text>
+      <Text variant='titleLarge'>Informe os dados do Aluno:</Text>
 
       <TextInput
-        stles={styles.input}
+        style={styles.input}
         mode='outlined'
         label="Nome"
-        placeholder='informe o nome'
+        placeholder='Informe o nome'
         value={nome}
-        onChangeText={setNome}   
+        onChangeText={setNome}
       />
 
       <TextInput
-        stles={styles.input}
+        style={styles.input}
         mode='outlined'
         label="CPF"
-        placeholder='informe o nome'
-        value={nome}
-        onChangeText={setCPF}
-        keyboardType='decimal-pad'   
+        placeholder='Informe o CPF'
+        value={cpf}
+        onChangeText={setCpf}
+        keyboardType='decimal-pad'
+        render={(props) => (
+          <TextInputMask
+            {...props}
+            type={'cpf'}
+          />
+        )}
       />
 
       <TextInput
-        stles={styles.input}
+        style={styles.input}
         mode='outlined'
         label="E-mail"
-        placeholder='informe o E-mail'
-        value={nome}
-        onChangeText={setEmail}   
+        placeholder='Informe o E-mail'
+        value={email}
+        onChangeText={setEmail}
+        keyboardType='email-address'
       />
 
       <TextInput
-        stles={styles.input}
+        style={styles.input}
         mode='outlined'
         label="Telefone"
-        placeholder='informe o Telefone'
-        value={nome}
+        placeholder='Informe o Telefone'
+        value={telefone}
         onChangeText={setTelefone}
-        keyboardType='numeric'   
+        keyboardType='numeric'
+        render={(props) => (
+          <TextInputMask
+            {...props}
+            type={'cel-phone'}
+            options={{
+              maskType: 'BRL',
+              withDDD: true,
+              dddMask: '(99)'
+            }}
+          />
+        )}
       />
 
       <TextInput
-        stles={styles.input}
+        style={styles.input}
         mode='outlined'
         label="Data de Nascimento"
-        placeholder='informe a data de nascimento'
-        value={nome}
+        placeholder='Informe a Data'
+        value={dataNascimento}
         onChangeText={setDataNascimento}
-        keyboardType='numeric'      
-        />
+        keyboardType='numeric'
+        render={(props) => (
+          <TextInputMask
+            {...props}
+            type={'datetime'}
+            options={{
+              format: 'DD/MM/YYYY'
+            }}
+          />
+        )}
+      />
+
+      <Button
+        style={styles.input}
+        mode='contained'
+        onPress={salvar}
+      >
+        Salvar
+      </Button>
+
+
     </View>
   )
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        marginTop: 10
-    },
-    input: {
-        width: '90%',
-        marginTop: 10
-    }
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    marginTop: 10
+  },
+  input: {
+    width: '90%',
+    marginTop: 10
+  }
 })
